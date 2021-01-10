@@ -1,9 +1,9 @@
-#include "function_maximav5.h"
+#include "function_maxima.h"
 
 #include <cassert>
 #include <iostream>
 #include <vector>
-
+/*
 std::ostream& operator<<(std::ostream& os, const typename FunctionMaxima<int, int>::point_type& pt){
     os<<pt.arg()<<" "<<pt.value()<<std::endl;
     return os;
@@ -21,7 +21,7 @@ std::ostream& operator<<(std::ostream& os, const FunctionMaxima<int, int>& fm){
     os<<std::endl;
     return os;
 }
-
+*/
 
 
 
@@ -73,42 +73,30 @@ int main() {
   assert(fun_equal(fun, {{0, 1}}));
   assert(fun_mx_equal(fun, {{0, 1}}));
 
-  std::cout<<fun;
-
+  
   fun.set_value(0, 0);
   assert(fun_equal(fun, {{0, 0}}));
   assert(fun_mx_equal(fun, {{0, 0}}));
 
-  std::cout<<fun;
-
+  
   fun.set_value(1, 0);
 
-  std::cout<<fun;
-
-
   fun.set_value(2, 0);
-
-  std::cout<<fun;
 
   assert(fun_equal(fun, {{0, 0}, {1, 0}, {2, 0}}));
   assert(fun_mx_equal(fun, {{0, 0}, {1, 0}, {2, 0}}));
 
   fun.set_value(1, 1);
 
-    std::cout<<fun;
-
   assert(fun_mx_equal(fun, {{1, 1}}));
 
   fun.set_value(2, 2);
 
-    std::cout<<fun;
   assert(fun_mx_equal(fun, {{2, 2}}));
   fun.set_value(0, 2);
 
-    std::cout<<fun;
   fun.set_value(1, 3);
 
-    std::cout<<fun;
   assert(fun_mx_equal(fun, {{1, 3}}));
 //LOG("SOMETHING AFTER")
   try {
@@ -117,19 +105,16 @@ int main() {
   } catch (InvalidArg &e) {
     std::cout << e.what() << std::endl;
   }
-std::cout<<fun;
 
 
   fun.erase(1);
 
-    std::cout<<fun;
   assert(fun.find(1) == fun.end());
   assert(fun_mx_equal(fun, {{0, 2}, {2, 2}}));
 
   fun.set_value(-2, 0);
   fun.set_value(-1, -1);
 
-    std::cout<<fun;
   assert(fun_mx_equal(fun, {{0, 2}, {2, 2}, {-2, 0}}));
 
   std::vector<FunctionMaxima<Secret, Secret>::point_type> v;
